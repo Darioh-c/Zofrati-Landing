@@ -99,6 +99,7 @@
   #mapaVivo{width:100%;height:clamp(380px,56vh,560px);background:#E8EAEA}
   .mapa .leaflet-container{font-family:'Manrope',sans-serif}
   .lbl-lugar{font-weight:700;font-size:12px;color:#33454C;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+  .lbl-left{display:inline-block;transform:translateX(-100%)}
   .lbl-zofrati{font-weight:800;font-size:15px;color:#00161F;white-space:nowrap;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 4px #fff}
   .pin-zofrati{width:16px;height:16px;background:#F0B428;border:2.5px solid #00161F;transform:rotate(45deg)}
   .mapa-pie{font-size:.9rem;color:var(--sec-dark);font-weight:600;margin-top:12px}
@@ -642,20 +643,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
   const mapa = L.map('mapaVivo', {scrollWheelZoom:false, zoomSnap:0.25, attributionControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png', {
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains:'abcd', maxZoom:18
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution:'Esri, HERE, Garmin &middot; &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom:16
   }).addTo(mapa);
   const zofrati = [-1.0580, -80.6480];
   const sitios = [
-    {p:[-0.9442,-80.7266], n:'Puerto de Manta', dy:-14},
-    {p:[-0.9496,-80.6790], n:'Aeropuerto internacional', dy:-14},
-    {p:[-0.9430,-80.6060], n:'Jaramijó', dy:-14},
-    {p:[-1.0459,-80.6597], n:'Montecristi', dy:-14}
+    {p:[-0.9442,-80.7266], n:'Puerto de Manta', a:[-8,-12], c:'lbl-lugar'},
+    {p:[-0.9496,-80.6790], n:'Aeropuerto internacional', a:[-8,-12], c:'lbl-lugar'},
+    {p:[-0.9430,-80.6060], n:'Jaramijó', a:[12,8], c:'lbl-lugar lbl-left'},
+    {p:[-1.0459,-80.6597], n:'Montecristi', a:[12,8], c:'lbl-lugar lbl-left'}
   ];
   sitios.forEach(s => {
     L.circleMarker(s.p, {radius:5, color:'#00161F', weight:2, fillColor:'#FFFFFF', fillOpacity:1}).addTo(mapa);
-    L.marker(s.p, {icon:L.divIcon({className:'', html:'<span class="lbl-lugar">'+s.n+'</span>', iconAnchor:[-(8), s.dy]}), interactive:false}).addTo(mapa);
+    L.marker(s.p, {icon:L.divIcon({className:'', html:'<span class="'+s.c+'">'+s.n+'</span>', iconAnchor:s.a}), interactive:false}).addTo(mapa);
   });
   [sitios[0].p, sitios[1].p].forEach(d => L.polyline([zofrati, d], {color:'#99A2A5', weight:1.5, dashArray:'5 6'}).addTo(mapa));
   L.marker(zofrati, {icon:L.divIcon({className:'', html:'<div class="pin-zofrati"></div>', iconSize:[16,16], iconAnchor:[8,8]}), interactive:false}).addTo(mapa);
