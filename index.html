@@ -25,7 +25,8 @@
     --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  .stat,.cifra,.motivo,.uc,.tile,.servicio,.modelo,.inc .card,.fila,.cambio,.hero-grid>*,.split>*,.foot-grid>*{min-width:0}
   body{
     background:var(--blanco);
     color:var(--tinta);
@@ -247,10 +248,10 @@
 
   /* Responsive */
   @media (max-width:980px){
-    .hero-grid{grid-template-columns:1fr}
-    .stats .fila{grid-template-columns:1fr 1fr;gap:34px}
-    .ucases,.inc,.split{grid-template-columns:1fr}
-    .cifras{grid-template-columns:1fr 1fr;gap:34px}
+    .hero-grid{grid-template-columns:minmax(0,1fr)}
+    .stats .fila{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px}
+    .ucases,.inc,.split{grid-template-columns:minmax(0,1fr)}
+    .cifras{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px}
     .motivos{grid-template-columns:1fr 1fr}
     .resuelve .fila{grid-template-columns:1fr;gap:12px}
     .tiles{grid-template-columns:1fr}
@@ -259,19 +260,52 @@
     .allies-grid{grid-template-columns:repeat(3,1fr);gap:36px}
   }
   @media (max-width:620px){
-    .wrap{padding:0 20px}
-    nav{padding:14px 20px}
+    .wrap{padding:0 18px}
+    nav{padding:12px 18px}
+    nav.solid{padding:10px 18px}
+    nav .logo{height:28px}
     .nav-links a.lnk{display:none}
-    .cifras{grid-template-columns:1fr 1fr;gap:28px}
-    .motivos{grid-template-columns:1fr}
-    .servicios{grid-template-columns:1fr 1fr}
-    .modelos{grid-template-columns:1fr 1fr}
-    .allies-grid{grid-template-columns:1fr 1fr 1fr;gap:26px}
-    .uc .track{flex-direction:column;align-items:flex-start;gap:22px}
+    .nav-cta{font-size:.82rem;padding:10px 14px}
+    .hero-texto{padding-top:104px;padding-bottom:48px}
+    .hero-texto h1{max-width:none}
+    .hero-actions{flex-direction:column;gap:12px;margin-top:30px}
+    .btn{width:100%;justify-content:center;padding:16px 18px;font-size:.98rem}
+    #mapaVivo{height:340px}
+    .mapa-pie{font-size:.82rem}
+    .stats .fila{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 16px;padding:40px 0}
+    .stat b{font-size:2.2rem}
+    .stat .sub{font-size:.9rem}
+    .band{padding:64px 0}
+    .band-tight{padding:52px 0}
+    .pivot .wrap,.cta .wrap{padding-top:72px;padding-bottom:72px}
+    .es{padding:72px 0}
+    .cifras{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 16px}
+    .cifra .n{white-space:normal;font-size:1.9rem;overflow-wrap:anywhere}
+    .cifra .d{font-size:.9rem}
+    .motivos{grid-template-columns:minmax(0,1fr)}
+    .motivo{min-height:0;padding:28px 24px}
+    .motivo .v{font-size:2.4rem}
+    .resuelve .palabra{font-size:2.8rem}
+    .servicios{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+    .servicio{padding:22px 14px}
+    .modelos{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+    .modelo:last-child{grid-column:1/-1}
+    .allies-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px}
+    .allies-grid img{max-height:40px}
+    .uc{padding:28px 22px}
+    .uc .track{flex-direction:column;align-items:flex-start;gap:18px}
     .uc .conn{display:none}
-    .uc .node{flex-direction:row;text-align:left}
+    .uc .node{flex-direction:row;text-align:left;gap:14px}
     .uc .node span{max-width:none}
-    .barra .track{height:64px}
+    .inc .card{padding:30px 24px}
+    .inc .pct{font-size:3.4rem}
+    .barra .track{height:auto;min-height:72px}
+    .barra .zf,.barra .pe{white-space:normal;flex-direction:column;align-items:flex-start;justify-content:center;padding:12px 12px;line-height:1.1}
+    .barra b{font-size:1.4rem;margin:0}
+    .barra span{font-size:.72rem}
+    .foot-grid{gap:30px}
+    footer{padding:48px 0 32px}
+    .foot-bottom{font-size:.78rem}
   }
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
@@ -642,7 +676,7 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-  const mapa = L.map('mapaVivo', {scrollWheelZoom:false, zoomSnap:0.25, attributionControl:true});
+  const mapa = L.map('mapaVivo', {scrollWheelZoom:false, dragging:!L.Browser.mobile, tap:!L.Browser.mobile, zoomSnap:0.25, attributionControl:true});
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution:'Esri, HERE, Garmin &middot; &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom:16
