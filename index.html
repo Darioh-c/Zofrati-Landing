@@ -216,6 +216,38 @@
   .inc .foot{margin-top:auto;padding-top:26px;font-size:.84rem;color:var(--tinta60);line-height:1.6;font-weight:500}
   .inc .destacada .foot{color:#7E939B}
 
+
+  /* Calculadora */
+  .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);margin-top:clamp(40px,6vh,60px);align-items:start}
+  .ctrl{padding:22px 0;border-top:1px solid rgba(255,255,255,.14)}
+  .ctrl:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+  .ctrl .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px}
+  .ctrl label{font-weight:700;font-size:1rem;color:var(--sec-dark)}
+  .ctrl output{font-weight:800;font-size:1.25rem;letter-spacing:-.02em;white-space:nowrap}
+  .ctrl input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:linear-gradient(to right,var(--blanco) 0 var(--p,50%),rgba(255,255,255,.22) var(--p,50%) 100%);outline:none}
+  .ctrl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--blanco);border:3px solid var(--tinta);box-shadow:0 0 0 2px var(--blanco);cursor:pointer}
+  .ctrl input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blanco);border:3px solid var(--tinta);box-shadow:0 0 0 2px var(--blanco);cursor:pointer}
+  .ctrl input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:rgba(255,255,255,.22)}
+  .ctrl input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--blanco)}
+  .res{background:var(--blanco);color:var(--tinta);border-radius:var(--r);padding:clamp(28px,4vw,44px)}
+  .res .k{font-weight:800;font-size:.9rem;color:var(--tinta60)}
+  .res .big{font-weight:800;font-size:clamp(2.4rem,4.6vw,3.8rem);letter-spacing:-.04em;line-height:1;margin-top:8px}
+  .res .big small{font-size:.42em;color:var(--tinta40);letter-spacing:-.01em;margin-right:6px}
+  .res .dos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(0,22,31,.1)}
+  .res .dos b{display:block;font-weight:800;font-size:clamp(1.3rem,2.2vw,1.8rem);letter-spacing:-.03em;margin-top:6px}
+  .barra-ahorro{display:flex;height:14px;border-radius:7px;overflow:hidden;margin-top:28px;background:var(--claro)}
+  .barra-ahorro span{display:block;height:100%;transition:width .4s var(--ease)}
+  .leyenda{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+  .leyenda div{font-size:.88rem;color:var(--tinta60);font-weight:600;padding-left:16px;position:relative;line-height:1.35}
+  .leyenda div::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;border-radius:50%}
+  .leyenda b{display:block;color:var(--tinta);font-weight:800;font-size:1rem}
+  .c1{background:var(--tinta)}.c2{background:#5E7078}.c3{background:var(--tinta20)}
+  .leyenda .l1::before{background:var(--tinta)}.leyenda .l2::before{background:#5E7078}.leyenda .l3::before{background:var(--tinta20)}
+  .res .liq{margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,22,31,.1);font-size:.95rem;color:var(--tinta60);font-weight:600}
+  .res .liq b{color:var(--tinta);font-weight:800}
+  .res .btn{margin-top:26px;width:100%;justify-content:center}
+  .nota{margin-top:28px;font-size:.84rem;color:#7E939B;line-height:1.6;max-width:70ch;font-weight:500}
+
   /* Predio */
   .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(36px,5vw,80px);align-items:center}
   .media{overflow:hidden;border-radius:var(--r)}
@@ -258,7 +290,7 @@
   @media (max-width:980px){
     .rot{font-size:.7rem;padding:6px 8px}
     .stats .fila{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px}
-    .ucases,.inc,.split{grid-template-columns:minmax(0,1fr)}
+    .ucases,.inc,.split,.calc{grid-template-columns:minmax(0,1fr)}
     .cifras{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px}
     .motivos{grid-template-columns:1fr 1fr}
     .resuelve .fila{grid-template-columns:1fr;gap:12px}
@@ -308,6 +340,9 @@
     .uc .node span{max-width:none}
     .inc .card{padding:30px 24px}
     .inc .pct{font-size:3.4rem}
+    .leyenda{grid-template-columns:minmax(0,1fr)}
+    .res .dos{grid-template-columns:minmax(0,1fr)}
+    .ctrl output{font-size:1.1rem}
     .barra .track{height:auto;min-height:72px}
     .barra .zf,.barra .pe{white-space:normal;flex-direction:column;align-items:flex-start;justify-content:center;padding:12px 12px;line-height:1.1}
     .barra b{font-size:1.4rem;margin:0}
@@ -333,6 +368,7 @@
     <a class="lnk" href="#ecosistema">Ecosistema</a>
     <a class="lnk" href="#ubicacion">Ubicación</a>
     <a class="lnk" href="#incentivos">Incentivos</a>
+    <a class="lnk" href="#calculadora">Calculadora</a>
     <a class="nav-cta" href="#contacto">Agendar diagnóstico</a>
   </div>
 </nav>
@@ -485,6 +521,56 @@
   </div>
 </section>
 
+<!-- CALCULADORA -->
+<section class="band fondo-tinta on-dark" id="calculadora">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label reveal">Calculadora de ahorro</span>
+      <h2 class="h2 reveal d1" style="max-width:22ch">Cuánto deja de pagar su operación en ZOFRATI.</h2>
+    </div>
+    <div class="calc">
+      <div class="reveal">
+        <div class="ctrl">
+          <div class="row"><label for="c-ebit">Utilidad operativa anual</label><output id="o-ebit">USD 1.000.000</output></div>
+          <input type="range" id="c-ebit" min="0" max="5000000" step="50000" value="1000000">
+        </div>
+        <div class="ctrl">
+          <div class="row"><label for="c-imp">Importación anual de maquinaria e insumos</label><output id="o-imp">USD 2.000.000</output></div>
+          <input type="range" id="c-imp" min="0" max="10000000" step="100000" value="2000000">
+        </div>
+        <div class="ctrl">
+          <div class="row"><label for="c-aran">Arancel promedio de su sector</label><output id="o-aran">10%</output></div>
+          <input type="range" id="c-aran" min="0" max="30" step="1" value="10">
+        </div>
+        <div class="ctrl">
+          <div class="row"><label for="c-ext">Pagos anuales al exterior</label><output id="o-ext">USD 500.000</output></div>
+          <input type="range" id="c-ext" min="0" max="5000000" step="50000" value="500000">
+        </div>
+        <p class="nota">Estimación referencial frente al régimen general con tarifas vigentes: Impuesto a la Renta 25%, ISD 5%, IVA 15%. Aplica a usuarios calificados de la zona franca y no sustituye una evaluación tributaria.</p>
+      </div>
+      <div class="res reveal d1">
+        <span class="k">Ahorro anual, años 1 al 5</span>
+        <div class="big"><small>USD</small><span id="r-a5">0</span></div>
+        <div class="dos">
+          <div><span class="k">Acumulado en 5 años</span><b>USD <span id="r-acum">0</span></b></div>
+          <div><span class="k">Anual desde el año 6</span><b>USD <span id="r-a6">0</span></b></div>
+        </div>
+        <div class="barra-ahorro" aria-hidden="true"><span class="c1" id="b-ir"></span><span class="c2" id="b-aran"></span><span class="c3" id="b-isd"></span></div>
+        <div class="leyenda">
+          <div class="l1">Impuesto a la Renta<b>USD <span id="l-ir">0</span></b></div>
+          <div class="l2">Aranceles<b>USD <span id="l-aran">0</span></b></div>
+          <div class="l3">ISD<b>USD <span id="l-isd">0</span></b></div>
+        </div>
+        <div class="liq">Además, <b>USD <span id="r-iva">0</span></b> de IVA que no desembolsa cada año en sus importaciones.</div>
+        <a class="btn btn-tinta" id="c-mail" href="mailto:dario@zofrati.com?subject=Diagn%C3%B3stico%20ZOFRATI">
+          Validar con un diagnóstico
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EL PREDIO -->
 <section class="band">
   <div class="wrap">
@@ -617,6 +703,29 @@
     });
   },{threshold:0.18, rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal:not(.in), #barra').forEach(el=>io.observe(el));
+
+  // Calculadora
+  (function(){
+    const $ = id => document.getElementById(id);
+    const usd = v => Math.round(v).toLocaleString('de-DE');
+    const ins = {ebit:$('c-ebit'), imp:$('c-imp'), aran:$('c-aran'), ext:$('c-ext')};
+    function paint(el){ const p = (el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--p', p+'%'); }
+    function calc(){
+      const ebit=+ins.ebit.value, imp=+ins.imp.value, aran=+ins.aran.value/100, ext=+ins.ext.value;
+      $('o-ebit').textContent='USD '+usd(ebit); $('o-imp').textContent='USD '+usd(imp);
+      $('o-aran').textContent=ins.aran.value+'%'; $('o-ext').textContent='USD '+usd(ext);
+      const ir5=ebit*0.25, ir6=ebit*0.10, ar=imp*aran, isd=ext*0.05;
+      const a5=ir5+ar+isd, a6=ir6+ar+isd, iva=imp*0.15;
+      $('r-a5').textContent=usd(a5); $('r-acum').textContent=usd(a5*5); $('r-a6').textContent=usd(a6);
+      $('l-ir').textContent=usd(ir5); $('l-aran').textContent=usd(ar); $('l-isd').textContent=usd(isd); $('r-iva').textContent=usd(iva);
+      const t=a5||1; $('b-ir').style.width=(ir5/t*100)+'%'; $('b-aran').style.width=(ar/t*100)+'%'; $('b-isd').style.width=(isd/t*100)+'%';
+      const body='Hola, quiero validar esta simulaci\u00f3n:%0A%0AUtilidad operativa anual: USD '+usd(ebit)+'%0AImportaci\u00f3n anual: USD '+usd(imp)+'%0AArancel promedio: '+ins.aran.value+'%25%0APagos al exterior: USD '+usd(ext)+'%0A%0AAhorro anual estimado (a\u00f1os 1 a 5): USD '+usd(a5)+'%0A%0AEmpresa:%0ASector:';
+      $('c-mail').href='mailto:dario@zofrati.com?subject=Diagn%C3%B3stico%20ZOFRATI%20con%20simulaci%C3%B3n&body='+body;
+      Object.values(ins).forEach(paint);
+    }
+    Object.values(ins).forEach(el=>el.addEventListener('input', calc));
+    calc();
+  })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
